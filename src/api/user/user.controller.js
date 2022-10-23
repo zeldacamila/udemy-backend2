@@ -2,6 +2,7 @@ const User = require('./user.model')
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken');
 const { transporter, welcome } = require('../../utils/mailer');
+const { token } = require('morgan');
 
 
 
@@ -30,6 +31,7 @@ module.exports = {
   async login(req, res) {
     try {
       const { email, password } = req.body;
+      
       //validate email
       const user = await User.findOne({ email });console.log()
 
@@ -49,11 +51,26 @@ module.exports = {
         process.env.SECRET_KEY_JWT,
         { expiresIn: 60 * 60 * 24}
       )
-
+      
       res.status(200).json({  message: "✅user logged in", data:{email, token} })
 
     } catch (error) {
       res.status(400).json(`❌user could not login: ${error}`)
+    }
+  },
+  /* get single user by Id*/
+  async showSingleUser(req, res) {
+    try {
+      const { id } = req.user;
+      const user = await User.findById(id);
+
+      if(!user){
+        throw new Error("Token expired")
+      } 
+      res.status(200).json({  message: "✅user found", data:user })
+
+    } catch (error) {
+      res.status(400).json({ message: "❌user is not authenticated", data: error })
     }
   },
 }
