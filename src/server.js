@@ -20,7 +20,7 @@ app.use(cors({
 })) 
 
 app.use(express.json())
-app.use(morgan('tiny'))
+//app.use(morgan('tiny'))
 verify(transporter)
 
 applicationRoutes(app)
