@@ -59,9 +59,8 @@ module.exports = {
   /* get single user by Id*/
   async showSingleUser(req, res) {
     try {
-      const { id } = req.user;
-      const user = await User.findById(id);
-      console.log('id', id)
+      const user = await User.findById(req.user);
+      console.log('id', req.user)
       if(!user){
         throw new Error("Token expired")
       } 
@@ -69,7 +68,7 @@ module.exports = {
 
     } catch (error) {
       console.log(error)
-      res.status(400).json({ message: "❌user is not authenticated", data: error.message })
+      res.status(400).json({ message: "❌user is not authenticated", data: error })
     }
   },
 }
