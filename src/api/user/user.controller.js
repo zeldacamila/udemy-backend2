@@ -21,6 +21,7 @@ module.exports = {
       )
       res.status(201).json({ message: "✅user created", info: { token, email, fullName} })
     } catch (error) {
+      console.log(error)
       res.status(400).json({ message: `❌user could NOT be created ${error}`})
     }
   },
