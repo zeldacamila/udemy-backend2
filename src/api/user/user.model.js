@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const { model, Schema, models } = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
   isInstructor: {
@@ -24,6 +24,7 @@ const UserSchema = new mongoose.Schema({
       },
       message: 'There is an user with this email that already exists'
     },
+    
   },
   password: {
     type: String,
