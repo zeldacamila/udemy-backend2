@@ -1,6 +1,6 @@
 const express = require("express");
-require("dotenv").config(); /*Solo se usa en Local no en producción*/
-const morgan = require('morgan');
+//require("dotenv").config(); /*Solo se usa en Local no en producción*/
+//const morgan = require('morgan');
 const cors = require('cors')
 const { connect } = require("./db")
 const applicationRoutes = require('./routes')
@@ -13,7 +13,7 @@ connect();
 
 
 app.use(cors({
-  "origin": "https://mir-top-v24-udemy-front-end.vercel.app",
+  "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
   "optionsSuccessStatus": 204
