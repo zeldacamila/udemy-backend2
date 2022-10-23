@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-   /*  validate: {
+    validate: {
       async validator(email) {
         try {
           const user = await models.user.findOne({ email })
@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
         }
       },
       message: 'There is an user with this email that already exists'
-    }, */
+    },
   },
   password: {
     type: String,
