@@ -61,14 +61,15 @@ module.exports = {
     try {
       const { id } = req.user;
       const user = await User.findById(id);
-
+      console.log('id', id)
       if(!user){
         throw new Error("Token expired")
       } 
       res.status(200).json({  message: "✅user found", data:user })
 
     } catch (error) {
-      res.status(400).json({ message: "❌user is not authenticated", data: error })
+      console.log(error)
+      res.status(400).json({ message: "❌user is not authenticated", data: error.message })
     }
   },
 }
