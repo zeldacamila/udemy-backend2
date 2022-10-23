@@ -64,12 +64,12 @@ const courseSchema = new Schema(
       value: String
     }],
     courseOwner: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
     classes: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Class",
       },
     ],
@@ -84,6 +84,6 @@ const courseSchema = new Schema(
   { timestamps: true }
 );
 
-const Course = mongoose.model("Course", courseSchema);
+const Course = model("Course", courseSchema);
 
 module.exports = Course;

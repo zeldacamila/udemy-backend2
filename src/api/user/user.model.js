@@ -41,13 +41,13 @@ const UserSchema = new Schema({
   },
   teacherCourses:[
     {
-      type: [{type: mongoose.Schema.Types.ObjectId, ref: 'course'}],
+      type: [{type: Schema.Types.ObjectId, ref: 'course'}],
       required: false
     }
   ],
   studentCourses: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref : 'course'
     }
   ],
@@ -59,6 +59,6 @@ const UserSchema = new Schema({
   },
 }, { timestamps: true });
 
-const User = mongoose.model('user', UserSchema);
+const User = model('user', UserSchema);
 
 module.exports = User;
