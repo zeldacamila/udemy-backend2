@@ -1,6 +1,6 @@
 const { model, Schema, models } = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   isInstructor: {
     type: Boolean,
     default: false
