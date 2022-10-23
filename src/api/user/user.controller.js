@@ -2,8 +2,6 @@ const User = require('./user.model')
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken');
 const { transporter, welcome } = require('../../utils/mailer');
-const { token } = require('morgan');
-
 
 
 module.exports = {

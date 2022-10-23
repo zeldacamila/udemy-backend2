@@ -28,5 +28,3 @@ applicationRoutes(app)
 app.listen(port, () => {
   console.log(`✅ Server listening on port ${port}!`)
 })
-
-// intento dos
