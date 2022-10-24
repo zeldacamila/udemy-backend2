@@ -5,7 +5,7 @@ const { transporter, welcome } = require('../../utils/mailer');
 
 
 module.exports = {
-/* signup */
+/* signup as a student*/
   async signup (req, res) {
     try {
       const { fullName, email, password } = req.body
@@ -71,4 +71,19 @@ module.exports = {
       res.status(400).json({ message: "❌user is not authenticated", data: error })
     }
   },
+  /*Update user as a instructor*/
+  async instructorTrue(req, res) {
+    try {
+      const user = await User.findById(req.user)
+      if(!user){
+        throw new Error("Token expired")
+      }
+      const updatedUser = {...user, isInstructor: true}
+      const instructorUser = await User.findByIdAndUpdate(req.user, updatedUser, { new: true } )
+      res.status(204).json({  message: "✅user is now an instructor", data:instructorUser })
+    } catch (error) {
+      console.log(error)
+      res.status(400).json({ message: "❌user can't be an instructor", data: error })
+    }
+  }
 }
