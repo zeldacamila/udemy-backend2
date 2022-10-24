@@ -60,7 +60,7 @@ module.exports = {
   async showSingleUser(req, res) {
     try {
       const user = await User.findById(req.user);
-      console.log('id', req.user)
+      console.log('id:', req.user)
       if(!user){
         throw new Error("Token expired")
       } 

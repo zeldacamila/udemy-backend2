@@ -3,7 +3,7 @@ const userController = require('./user.controller');
 const { auth } = require('../../utils/auth');
 
 router.route('/').post(userController.signup);
-router.route('/login', auth).post(userController.login);
-router.route('/', auth).get(userController.showSingleUser)
+router.route('/login').post(auth, userController.login);
+router.route('/').get(auth, userController.showSingleUser)
 
 module.exports = router;
