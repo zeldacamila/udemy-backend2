@@ -67,7 +67,6 @@ module.exports = {
       res.status(200).json({  message: "✅user found", data:user })
 
     } catch (error) {
-      console.log(error)
       res.status(400).json({ message: "❌user is not authenticated", data: error })
     }
   },
@@ -81,7 +80,7 @@ module.exports = {
       user.isInstructor= true
       const instructorUser = await User.findByIdAndUpdate(req.user, user, { new: true } )
       console.log(instructorUser)
-      res.status(204).json({  message: "✅user is now an instructor", data:instructorUser })
+      res.status(200).json({  message: "✅user is now an instructor", data: instructorUser })
     } catch (error) {
       console.log(error)
       res.status(400).json({ message: "❌user can't be an instructor", data: error })
