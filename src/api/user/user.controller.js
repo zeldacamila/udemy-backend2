@@ -78,9 +78,8 @@ module.exports = {
       if(!user){
         throw new Error("Token expired")
       }
-      const updatedUser = {...user, isInstructor: true}
-      console.log(updatedUser)
-      const instructorUser = await User.findByIdAndUpdate(req.user, updatedUser, { new: true } )
+      user.isInstructor= true
+      const instructorUser = await User.findByIdAndUpdate(req.user, user, { new: true } )
       console.log(instructorUser)
       res.status(204).json({  message: "✅user is now an instructor", data:instructorUser })
     } catch (error) {
